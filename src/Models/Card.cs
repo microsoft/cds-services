@@ -12,3 +12,8 @@ public class Card
     public string? SelectionBehavior { get; set; }
     public IList<Link>? Links { get; set; }
 }
+
+public class CardResponse
+{
+    public IList<Card> Cards { get; set; } = default!;
+}
