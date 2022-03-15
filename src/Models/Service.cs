@@ -1,17 +1,10 @@
-using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json.Linq;
+namespace CDSService.Models;
 
-namespace CDSService.Models 
+public class Service 
 {
-    public class Service 
-    {
-        [Required]
-        public string Hook { get; set; } = default!;
-        [Required]
-        public string Id { get; set; } = default!;
-        [Required]
-        public string Description { get; set; } = default!;
-        public string? Title { get; set; }
-        public JObject? Prefetch { get; set; }
-    }
+    public string Hook { get; set; } = default!;
+    public string Id { get; set; } = default!;
+    public string Description { get; set; } = default!;
+    public string? Title { get; set; }
+    public Dictionary<string, string>? Prefetch { get; set; }
 }

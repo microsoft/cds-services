@@ -22,7 +22,6 @@ namespace CDSService.Api
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
             var response = req.CreateResponse(HttpStatusCode.OK);
-            //response.Headers.Add("Content-Type", "application/json; charset=utf-8");
 
             var services = new List<Service>();
             services.Add(new Service
@@ -30,7 +29,12 @@ namespace CDSService.Api
                 Hook = "cds-service-sample",
                 Id = "cds-service-sample",
                 Description = "Sample CDS Hook Service",
-                Title = "CDS Service Sample"
+                Title = "CDS Service Sample",
+                Prefetch = new Dictionary<string, string>
+                {
+                    {"name", "phil" },
+                    {"sport", "golf" }
+                }
             });
 
             response.WriteAsJsonAsync(services);
