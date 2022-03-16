@@ -17,7 +17,7 @@ namespace Api
         }
 
         [Function("PatientViewSample")]
-        public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "patient-view-sample")] HttpRequestData req)
+        public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "cds-services/patient-view-sample")] HttpRequestData req)
         {
             _logger.LogInformation("PatientViewSample function processed a request.");
 
