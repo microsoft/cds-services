@@ -37,7 +37,11 @@ namespace CDSService.Api
                 Hook = "patient-view",
                 Id = "patient-view-sample",
                 Description = "Sample Patient View CDS Hook Service",
-                Title = "Patient View Sample Service"
+                Title = "Patient View Sample Service",
+                Prefetch = new Dictionary<string, string>
+                {
+                    { "patient", "Patient/{{context.patientId}}" }
+                }
             });
 
             var result = new ServicePayload

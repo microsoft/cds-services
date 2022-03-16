@@ -1,3 +1,4 @@
+using CDSService.Models.Converters;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -30,6 +31,7 @@ internal static class WorkerConfigurationExtensions
 
             // override the default value
             jsonSerializerOptions.PropertyNameCaseInsensitive = false;
+            jsonSerializerOptions.Converters.Add(new PatientConverter());
         });
 
         return builder;
