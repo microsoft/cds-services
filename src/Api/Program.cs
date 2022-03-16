@@ -4,11 +4,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Azure.Core.Serialization;
 
 var host = new HostBuilder()
     .ConfigureFunctionsWorkerDefaults(workerApp =>
     {
-        workerApp.ConfigureSystemTextJson();
+        workerApp.UseNewtonsoftJson();
     })
     .Build();
 
@@ -31,11 +34,25 @@ internal static class WorkerConfigurationExtensions
 
             // override the default value
             jsonSerializerOptions.PropertyNameCaseInsensitive = false;
-            jsonSerializerOptions.Converters.Add(new PatientConverter());
+            //jsonSerializerOptions.Converters.Add(new PatientConverter());
         });
 
         return builder;
     }
 
-    
+        public static IFunctionsWorkerApplicationBuilder UseNewtonsoftJson(this IFunctionsWorkerApplicationBuilder builder)
+        {
+            builder.Services.Configure<WorkerOptions>(workerOptions =>
+            {
+                var settings = NewtonsoftJsonObjectSerializer.CreateJsonSerializerSettings();
+                settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                settings.NullValueHandling = NullValueHandling.Ignore;
+                settings.Converters.Add(new PatientConverter());
+
+                workerOptions.Serializer = new NewtonsoftJsonObjectSerializer(settings);
+            });
+
+            return builder;
+        }
+        
 }

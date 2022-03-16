@@ -28,17 +28,8 @@ namespace Api
 
             try
             {
-                //var reqPayload = await req.ReadFromJsonAsync<PatientViewSampleRequest>();
-                var reqStr = await req.ReadAsStringAsync();
-                JObject j = JObject.Parse(reqStr);
-                var reqPayload = new PatientViewSampleRequest();
-                reqPayload.Hook = j["hook"].ToString();
-                reqPayload.HookInstance = j["hookInstance"].ToString();
-                reqPayload.FhirServer = j["fhirServer"]?.ToString();
-                reqPayload.FhirAuthorization = j.SelectToken("fhirAuthorization").ToObject<FhirAuthorization>();
-                reqPayload.Context = j.SelectToken("context").ToObject<PatientViewContext>();
-                reqPayload.Prefetch = new PatientViewSamplePrefetch { Patient = (FhirJsonNode.Parse(j.SelectToken("prefetch.patient").ToString())).ToPoco<Patient>() };
-
+                var reqPayload = await req.ReadFromJsonAsync<PatientViewSampleRequest>();
+                
                 string patientFullName = $"{reqPayload.Prefetch.Patient.Name[0].Given.First()} {reqPayload.Prefetch.Patient.Name[0].Family}";
 
                 var cardResponse = new CardResponse

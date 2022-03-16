@@ -1,27 +1,23 @@
 ﻿using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CDSService.Models.Converters
 {
     public class PatientConverter : JsonConverter<Patient>
     {
-        public override Patient Read(
-            ref Utf8JsonReader reader,
-            Type typeToConvert,
-            JsonSerializerOptions options)
+        public override Patient ReadJson(JsonReader reader, Type objectType, Patient? existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
-                reader.Read();
-                return FhirJsonNode.Parse(reader.GetString()).ToPoco<Patient>();
-
+            var valStr = JRaw.Create(reader).ToString();
+            return FhirJsonNode.Parse(valStr).ToPoco<Patient>();
         }
 
-        public override void Write(
-            Utf8JsonWriter writer,
-            Patient patientValue,
-            JsonSerializerOptions options) =>
-                throw new NotImplementedException();
-    }
+        public override void WriteJson(JsonWriter writer, Patient? value, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }        
+    }    
+
 }
