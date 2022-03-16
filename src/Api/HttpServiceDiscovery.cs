@@ -40,7 +40,12 @@ namespace CDSService.Api
                 Title = "Patient View Sample Service"
             });
 
-            response.WriteAsJsonAsync(services);
+            var result = new ServicePayload
+            {
+                Services = services
+            };
+
+            response.WriteAsJsonAsync(result);
 
             return response;
         }

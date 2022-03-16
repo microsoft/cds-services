@@ -8,3 +8,8 @@ public class Service
     public string? Title { get; set; }
     public Dictionary<string, string>? Prefetch { get; set; }
 }
+
+public class ServicePayload
+{
+    public IList<Service> Services { get; set; } = default!;
+}
