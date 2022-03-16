@@ -26,15 +26,18 @@ namespace CDSService.Api
             var services = new List<Service>();
             services.Add(new Service
             {
-                Hook = "cds-service-sample",
-                Id = "cds-service-sample",
-                Description = "Sample CDS Hook Service",
-                Title = "CDS Service Sample",
-                Prefetch = new Dictionary<string, string>
-                {
-                    {"name", "phil" },
-                    {"sport", "golf" }
-                }
+                Hook = "order-sign",
+                Id = "cdc-opioid-overdose",
+                Description = "CDC Opioid Overdose Sample",
+                Title = "CDC Opioid Overdose Sample"                
+            });
+
+            services.Add(new Service
+            {
+                Hook = "patient-view",
+                Id = "patient-view-sample",
+                Description = "Sample Patient View CDS Hook Service",
+                Title = "Patient View Sample Service"
             });
 
             response.WriteAsJsonAsync(services);
