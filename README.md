@@ -4,6 +4,7 @@
 - Learn more about CDS Hooks at [https://cds-hooks.org](https://cds-hooks.org)
 
 Services in this kit include:
+- [patient-view-sample](src/Api/PatientViewSample.cs) - A patient-view hook service which requests the patient record as prefetch data and returns a sample card with the patient's name.
 - order-sign - Will use CDC guidelines to determine if patient is over the recommended Morphine milligram equivalent (MME) dosage.
 - patient-view/order-sign - treatment plan guidance
 
