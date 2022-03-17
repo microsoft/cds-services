@@ -1,7 +1,7 @@
 [![Build and deploy dotnet core app to Azure Function App - cds-services](https://github.com/microsoft/cds-services/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/microsoft/cds-services/actions/workflows/continuous-integration.yml)
 
 # CDS Hook Services - Starter kit
-- Learn more about CDS Hooks at [https://cds-hooks.org](https://cds-hooks.org)
+Learn more about CDS Hooks at [https://cds-hooks.org](https://cds-hooks.org)
 
 Services in this kit include:
 - [patient-view-sample](src/Api/PatientViewSample.cs) - A patient-view hook service which requests the patient record as prefetch data and returns a sample card with the patient's name.
