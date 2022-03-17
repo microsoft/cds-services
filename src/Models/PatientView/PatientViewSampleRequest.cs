@@ -1,6 +1,6 @@
 ﻿using Hl7.Fhir.Model;
 
-namespace CDSService.Models;
+namespace CDSService.Models.PatientView;
 
 public class PatientViewSampleRequest : ServiceRequestBase
 {

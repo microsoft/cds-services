@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace CDSService.Models.Converters
 {
+    [Obsolete("Use Generic FhirResourceConverter<Hl7.Fhir.Model.Base> instead.", false)]
     public class PatientConverter : JsonConverter<Patient>
     {
         public override Patient ReadJson(JsonReader reader, Type objectType, Patient? existingValue, bool hasExistingValue, JsonSerializer serializer)

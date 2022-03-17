@@ -1,4 +1,4 @@
-﻿namespace CDSService.Models;
+﻿namespace CDSService.Models.PatientView;
 
 public class PatientViewContext
 {
