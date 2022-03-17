@@ -1,14 +1,9 @@
-using System.Collections.Generic;
-using System.Net;
 using CDSService.Models;
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
+using CDSService.Models.PatientView;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Net;
 
 namespace Api
 {

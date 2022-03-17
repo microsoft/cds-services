@@ -7,6 +7,8 @@ using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Azure.Core.Serialization;
+using Hl7.Fhir.Model;
+using Models.Converters;
 
 var host = new HostBuilder()
     .ConfigureFunctionsWorkerDefaults(workerApp =>
@@ -47,7 +49,7 @@ internal static class WorkerConfigurationExtensions
                 var settings = NewtonsoftJsonObjectSerializer.CreateJsonSerializerSettings();
                 settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 settings.NullValueHandling = NullValueHandling.Ignore;
-                settings.Converters.Add(new PatientConverter());
+                settings.Converters.Add(new FhirResourceConverter<Patient>());
 
                 workerOptions.Serializer = new NewtonsoftJsonObjectSerializer(settings);
             });
