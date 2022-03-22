@@ -8,6 +8,17 @@ Services in this kit include:
 - order-sign - Will use CDC guidelines to determine if patient is over the recommended Morphine milligram equivalent (MME) dosage.
 - patient-view/order-sign - treatment plan guidance
 
+## Getting Started
+1. [Fork](https://github.com/microsoft/cds-services/fork) this repo, then clone to your machine.
+1. Open `src/CDSServices.sln` with Visual Studio or VSCode.
+1. Start debugging with "F5"
+1. Grab the full URL of the `/api/cds-services` discovery endpoint. (This will be displayed in your terminal window after the project starts)
+1. Browse to [https://launch.smarthealthit.org](https://launch.smarthealthit.org) SMART launch simulator.
+1. Select "CDS Hook Services". Next, select a sample patient. Finally, paste the HttpServiceDiscovery URL and click "Launch". Click "Login" on the sample practitioner login screen.
+![SMART launch sandbox](./docs/imgs/smartlaunch.png)
+1. Once the CDS Hook sandbox loads, select the "patient-view-sample" service from the dropdown in order to inspect the request/response data.
+![CDS Hook Sandbox](./docs/imgs/cds_sandbox.png)
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
